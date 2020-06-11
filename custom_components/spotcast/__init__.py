@@ -41,7 +41,7 @@ SERVICE_START_COMMAND_SCHEMA = vol.Schema({
     vol.Optional(CONF_SPOTIFY_ACCOUNT): cv.string,
     vol.Optional(CONF_FORCE_PLAYBACK, default=False): cv.boolean,
     vol.Optional(CONF_RANDOM, default=False): cv.boolean,
-    vol.Optional(CONF_REPEAT, default='off'): cv.string,
+    vol.Optional(CONF_REPEAT, default=False): cv.boolean,
     vol.Optional(CONF_SHUFFLE, default=False): cv.boolean,
     vol.Optional(CONF_OFFSET, default=0): cv.string
 })
