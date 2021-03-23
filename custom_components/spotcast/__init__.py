@@ -15,6 +15,17 @@ from homeassistant.components.cast.helpers import ChromeCastZeroconf
 from homeassistant.components.spotify.media_player import SpotifyMediaPlayer
 from homeassistant.helpers import entity_platform
 
+
+# Custom patch to force IPv4, since it seems to hang on IPv6
+import socket
+old_getaddrinfo = socket.getaddrinfo
+def new_getaddrinfo(*args, **kwargs):
+    responses = old_getaddrinfo(*args, **kwargs)
+    return [response for response in responses if response[0] == socket.AF_INET]
+socket.getaddrinfo = new_getaddrinfo
+
+#
+
 __VERSION__ = "3.5.2"
 DOMAIN = "spotcast"
 
